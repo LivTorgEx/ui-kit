@@ -1,0 +1,304 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from "@storybook/addon-docs/blocks";
+import { Badge } from "../components/Badge/Badge";
+import { Button } from "../components/Button/Button";
+import { Card } from "../components/Card/Card";
+import { Alert } from "../components/Alert/Alert";
+
+<Meta title="Design System/Brand Book" />
+
+# LivTorgEx — Brand Book
+
+The complete reference for LivTorgEx visual identity, design tokens, and usage guidelines.
+
+---
+
+## Logo
+
+### Symbol
+
+The LivTorgEx logo mark is a rounded square with a bold **"L"** in white on a `teal-500` background.
+
+<div className="flex items-center gap-8 my-6 flex-wrap">
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-16 h-16 rounded-2xl bg-teal-500 flex items-center justify-center text-white font-bold text-2xl shadow-lg shadow-teal-500/30">
+      L
+    </div>
+    <span className="text-xs text-gray-500 dark:text-gray-400">64px — default</span>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-teal-500/30">
+      L
+    </div>
+    <span className="text-xs text-gray-500 dark:text-gray-400">40px — compact</span>
+  </div>
+  <div className="flex flex-col items-center gap-2">
+    <div className="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center text-white font-bold text-sm shadow-sm shadow-teal-500/20">
+      L
+    </div>
+    <span className="text-xs text-gray-500 dark:text-gray-400">32px — small</span>
+  </div>
+  <div className="flex flex-col items-center gap-2 p-4 rounded-xl bg-gray-900">
+    <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center text-white font-bold text-lg">
+      L
+    </div>
+    <span className="text-xs text-gray-400">on dark</span>
+  </div>
+</div>
+
+### Wordmark
+
+The wordmark pairs the logo mark with **"LivTorgEx"** in Inter Bold.
+
+<div className="flex items-center gap-3 my-6 p-5 rounded-2xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 w-fit">
+  <div className="w-10 h-10 rounded-xl bg-teal-500 flex items-center justify-center text-white font-bold text-lg">
+    L
+  </div>
+  <span className="font-bold text-xl text-gray-900 dark:text-white tracking-tight">LivTorgEx</span>
+</div>
+
+### Guidelines
+
+- Never stretch or distort the logo mark
+- Maintain a clear-space equal to the logo height on all sides
+- Do not recolour the mark — only `teal-500` on white/dark backgrounds
+- Minimum size: 32 × 32 px
+
+---
+
+## Colors
+
+### Brand Palette
+
+<ColorPalette>
+  <ColorItem
+    title="Brand Primary — Teal"
+    subtitle="Main accent: buttons, links, highlights"
+    colors={{
+      "teal-400  #2dd4bf": "#2dd4bf",
+      "teal-500  #14b8a6": "#14b8a6",
+      "teal-600  #0d9488": "#0d9488",
+    }}
+  />
+  <ColorItem
+    title="Brand Secondary — Emerald"
+    subtitle="Profit / success states"
+    colors={{
+      "emerald-400  #34d399": "#34d399",
+      "emerald-500  #10b981": "#10b981",
+    }}
+  />
+  <ColorItem
+    title="Danger — Red"
+    subtitle="Loss / error / destructive actions"
+    colors={{
+      "red-400  #f87171": "#f87171",
+      "red-500  #ef4444": "#ef4444",
+    }}
+  />
+  <ColorItem
+    title="Warning — Amber"
+    subtitle="Caution / pending states"
+    colors={{
+      "amber-400  #fbbf24": "#fbbf24",
+      "amber-500  #f59e0b": "#f59e0b",
+    }}
+  />
+</ColorPalette>
+
+### Semantic Background Tokens
+
+<ColorPalette>
+  <ColorItem
+    title="Surface — Light"
+    subtitle="Background, card, border"
+    colors={{
+      "--background  #f9fafb": "#f9fafb",
+      "--card  #ffffff": "#ffffff",
+      "--border  #e5e7eb": "#e5e7eb",
+    }}
+  />
+  <ColorItem
+    title="Surface — Dark"
+    subtitle="Background, card, border"
+    colors={{
+      "--background  #030712": "#030712",
+      "--card  #111827": "#111827",
+      "--border  #1f2937": "#1f2937",
+    }}
+  />
+</ColorPalette>
+
+### Gray Scale
+
+<ColorPalette>
+  <ColorItem
+    title="Neutral grays"
+    subtitle="Text, borders, backgrounds"
+    colors={{
+      "gray-50  #f9fafb": "#f9fafb",
+      "gray-100  #f3f4f6": "#f3f4f6",
+      "gray-200  #e5e7eb": "#e5e7eb",
+      "gray-400  #9ca3af": "#9ca3af",
+      "gray-500  #6b7280": "#6b7280",
+      "gray-700  #374151": "#374151",
+      "gray-800  #1f2937": "#1f2937",
+      "gray-900  #111827": "#111827",
+      "gray-950  #030712": "#030712",
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Typography
+
+**Primary font:** [Inter](https://rsms.me/inter/) — Open Source, system-level rendering quality.
+
+<Typeset
+  fontSizes={[12, 14, 16, 18, 20, 24, 30, 36, 48, 60, 72]}
+  fontWeight={400}
+  sampleText="The quick brown fox jumps over the lazy dog"
+  fontFamily="Inter, ui-sans-serif, system-ui, sans-serif"
+/>
+
+### Weight Scale
+
+| Weight | Class | Usage |
+|--------|-------|-------|
+| 300 | `font-light` | Captions, secondary labels |
+| 400 | `font-normal` | Body text, descriptions |
+| 500 | `font-medium` | Navigation, emphasis |
+| 700 | `font-bold` | Headings, CTAs, numeric values |
+
+### Type Scale
+
+| Name | Size | Line Height | Usage |
+|------|------|-------------|-------|
+| `text-xs` | 12px | 16px | Labels, badges, table cells |
+| `text-sm` | 14px | 20px | Body secondary, helper text |
+| `text-base` | 16px | 24px | Body primary |
+| `text-lg` | 18px | 28px | Sub-headings |
+| `text-xl` | 20px | 28px | Section headings |
+| `text-2xl` | 24px | 32px | Page sub-titles |
+| `text-4xl` | 36px | 40px | Section titles |
+| `text-5xl` | 48px | 1 | Hero headings |
+
+### Installation
+
+```bash
+pnpm add @fontsource/inter
+```
+
+```ts
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+```
+
+---
+
+## Spacing
+
+Based on Tailwind's 4px grid.
+
+| Token | px | Usage |
+|-------|----|-------|
+| `gap-1` | 4px | Tight inline gaps |
+| `gap-2` | 8px | Icon–label pairs |
+| `gap-3` | 12px | List items |
+| `gap-4` | 16px | Card internal sections |
+| `gap-6` | 24px | Component rows |
+| `gap-8` | 32px | Section blocks |
+| `gap-16` | 64px | Page sections |
+| `p-5` | 20px | Default card padding |
+| `p-6` | 24px | Spacious card padding |
+| `px-8 py-3.5` | 32/14px | Large button |
+
+---
+
+## Border Radius
+
+| Token | Value | Usage |
+|-------|-------|-------|
+| `rounded-lg` | 8px | Inputs, chips |
+| `rounded-xl` | 12px | Buttons |
+| `rounded-2xl` | 16px | Cards, panels |
+| `rounded-full` | 9999px | Badges, avatars |
+
+---
+
+## Shadows
+
+| Token | Usage |
+|-------|-------|
+| `shadow-sm shadow-teal-500/20` | Primary button subtle glow |
+| `shadow-lg shadow-teal-500/5` | Card hover lift |
+| `shadow-2xl shadow-teal-500/30` | Featured/highlighted card |
+
+---
+
+## Components in Context
+
+A real-world example of how components compose together on a dark trading surface.
+
+<div className="dark my-6">
+  <div className="bg-gray-950 p-8 rounded-2xl flex flex-col gap-6">
+    <div className="flex items-center justify-between">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-lg bg-teal-500 flex items-center justify-center text-white font-bold text-sm">L</div>
+        <span className="font-bold text-white">LivTorgEx</span>
+      </div>
+      <div className="flex gap-2">
+        <Badge variant="active">Live</Badge>
+        <Badge variant="profit">+12.4%</Badge>
+      </div>
+    </div>
+
+    <div className="grid grid-cols-3 gap-3">
+      <Card className="p-4">
+        <p className="text-xs text-gray-400 mb-1">Portfolio Value</p>
+        <p className="text-xl font-bold text-white">$24,810</p>
+        <p className="text-xs text-emerald-400 mt-1">↑ $312 today</p>
+      </Card>
+      <Card className="p-4">
+        <p className="text-xs text-gray-400 mb-1">Active Bots</p>
+        <p className="text-xl font-bold text-white">7</p>
+        <p className="text-xs text-gray-400 mt-1">3 exchanges</p>
+      </Card>
+      <Card className="p-4">
+        <p className="text-xs text-gray-400 mb-1">Win Rate</p>
+        <p className="text-xl font-bold text-white">68.2%</p>
+        <p className="text-xs text-red-400 mt-1">↓ 1.3% this week</p>
+      </Card>
+    </div>
+
+    <Alert variant="info" title="Market Update">
+      BTC volatility is elevated. Consider reducing leverage on open positions.
+    </Alert>
+
+    <div className="flex gap-3">
+      <Button variant="primary" size="md">Deploy Strategy</Button>
+      <Button variant="secondary" size="md">View Analytics</Button>
+      <Button variant="ghost" size="md">Settings</Button>
+    </div>
+  </div>
+</div>
+
+---
+
+## Voice & Tone
+
+| Principle | Do | Don't |
+|-----------|-----|-------|
+| **Precise** | "Win rate: 68.2%" | "Doing pretty well" |
+| **Direct** | "Deploy strategy" | "Click here to get started with deploying" |
+| **Confident** | "Your bots are live" | "Your bots might be running" |
+| **Human** | "Something went wrong. Try again." | "Error 500: Internal Server Error" |
+
+### Numeric formatting
+
+- PnL: always include sign — `+$1,240` / `−$320`
+- Percentages: one decimal place — `12.4%`
+- Large numbers: thousands separator — `$1,240,000`
+- Crypto quantities: up to 6 decimal places — `0.004821 BTC`
