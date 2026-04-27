@@ -13,8 +13,10 @@ RUN pnpm run build-storybook
 # Stage 2: Serve with Nginx
 FROM nginx:alpine AS runner
 
-COPY --from=builder /app/storybook-static /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN apk add --no-cache gettext
 
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY --from=builder /app/storybook-static /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+
+EXPOSE 8080
+CMD ["sh", "-c", "envsubst '$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
