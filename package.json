@@ -34,6 +34,7 @@
   "devDependencies": {
     "@fontsource/inter": "^5.2.8",
     "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
     "@storybook/addon-themes": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
     "@tailwindcss/vite": "^4.2.4",
