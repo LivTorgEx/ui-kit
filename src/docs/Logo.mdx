@@ -1,0 +1,32 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Design System/Logo" />
+
+# Logo
+
+The LivTorgEx wordmark and icon.
+
+## Guidelines
+
+- **Minimum size:** 32×32 px (icon standalone) / 96×96 px (icon in marketing)
+- **Clear space:** Maintain padding equal to at least half the icon height on all sides
+- **Do not** recolor, rotate, stretch, or add effects to the logo
+- **File:** `public/logo.jpeg` (supplied JPEG at 200×200 px; scale down, never up)
+
+## Light vs Dark Background
+
+| Context | Treatment |
+|---|---|
+| Light background | Use standard logo as-is |
+| Dark background | Use same logo file — it has a transparent-safe appearance |
+
+## Usage in Code
+
+```tsx
+// Next.js
+import Image from "next/image";
+<Image src="/logo.jpeg" alt="LivTorgEx" width={32} height={32} className="rounded-xl" />
+
+// Plain img
+<img src="/logo.jpeg" alt="LivTorgEx" width={32} height={32} style={{ borderRadius: 8 }} />
+```

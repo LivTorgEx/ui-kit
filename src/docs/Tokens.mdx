@@ -1,0 +1,58 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Design System/Tokens" />
+
+# Design Tokens
+
+CSS custom properties defined in `src/style.css`. Consume via `var(--token-name)` or Tailwind utilities.
+
+## Semantic tokens
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `--background` | `#f9fafb` (gray-50) | `#030712` (gray-950) | Page background |
+| `--foreground` | `#030712` (gray-950) | `#f9fafb` (gray-50) | Body text |
+| `--card` | `#ffffff` | `#111827` (gray-900) | Card/panel backgrounds |
+| `--border` | `#e5e7eb` (gray-200) | `#1f2937` (gray-800) | Dividers, ring borders |
+| `--brand-primary` | `#14b8a6` (teal-500) | `#14b8a6` (teal-500) | Primary actions, links |
+| `--brand-primary-hover` | `#0d9488` (teal-600) | `#2dd4bf` (teal-400) | Hover state of primary |
+
+## CSS source
+
+```css
+:root {
+  --background: #f9fafb;
+  --foreground: #030712;
+  --card:       #ffffff;
+  --border:     #e5e7eb;
+  --brand-primary:       #14b8a6;
+  --brand-primary-hover: #0d9488;
+}
+
+.dark {
+  --background: #030712;
+  --foreground: #f9fafb;
+  --card:       #111827;
+  --border:     #1f2937;
+  --brand-primary:       #14b8a6;
+  --brand-primary-hover: #2dd4bf;
+}
+```
+
+## Consuming in apps
+
+### Next.js / landing
+Import `@livtorgex/ui-kit/style.css` in your root layout. The tokens cascade to all children.
+
+### trading-app/web
+Same — import in `app/layout.tsx` or `globals.css`.
+
+### trading-bot-react
+Import `@livtorgex/ui-kit/src/style.css` in `main.tsx` after MUI CSS baseline.
+
+## Dark mode activation
+
+The `.dark` class on `<html>` activates all dark tokens. This is driven by:
+- **landing / trading-app**: `next-themes` with `attribute="class"`
+- **trading-bot-react**: `ColorModeContextProvider` must toggle `document.documentElement.classList.toggle("dark", mode === "dark")`
+- **Storybook**: `withThemeByClassName` decorator (configured in `.storybook/preview.ts`)

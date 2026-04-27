@@ -1,0 +1,51 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Design System/Typography" />
+
+# Typography
+
+**Primary font:** Inter — weights 300 / 400 / 500 / 700.  
+**Fallback:** `ui-sans-serif, system-ui, sans-serif`
+
+## Type Scale
+
+| Name | Tailwind | Weight | Sample |
+|---|---|---|---|
+| Display / H1 | `text-7xl` | `font-bold` | Trade Smarter |
+| H2 | `text-4xl` | `font-bold` | Platform Features |
+| H3 | `text-2xl` | `font-semibold` | Automated Bots |
+| H4 | `text-xl` | `font-semibold` | Real-time Analytics |
+| Body Large | `text-lg` | `font-normal` | Deploy strategies — no code required. |
+| Body | `text-base` | `font-normal` | Start free, scale as you grow. |
+| Small / Label | `text-sm` | `font-medium` | ACTIVE BOTS · 12 MONTHS |
+| Micro / Caption | `text-xs` | `font-normal` | Updated 2 minutes ago |
+
+## Installing Inter
+
+### Next.js (landing / trading-app)
+```tsx
+// layout.tsx
+import { Inter } from "next/font/google";
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+// Apply: <html className={inter.variable}>
+```
+
+### Vite (trading-bot-react)
+```bash
+pnpm add -w @fontsource/inter
+```
+```tsx
+// main.tsx
+import "@fontsource/inter/300.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/700.css";
+```
+
+## MUI integration
+```ts
+// theme.ts
+typography: {
+  fontFamily: "'Inter', ui-sans-serif, system-ui, sans-serif",
+}
+```
