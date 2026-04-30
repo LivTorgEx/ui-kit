@@ -6,7 +6,10 @@
   "module": "src/index.ts",
   "types": "src/index.ts",
   "files": [
-    "src"
+    "src",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "exports": {
     ".": "./src/index.ts",
@@ -29,6 +32,23 @@
     "type": "git",
     "url": "git+https://github.com/LivTorgEx/ui-kit.git"
   },
+  "homepage": "https://ui.livtorgex.com",
+  "bugs": {
+    "url": "https://github.com/LivTorgEx/ui-kit/issues"
+  },
+  "author": {
+    "name": "LivTorgEx",
+    "url": "https://livtorgex.com"
+  },
+  "keywords": [
+    "react",
+    "typescript",
+    "tailwindcss",
+    "design-system",
+    "component-library",
+    "ui-kit",
+    "livtorgex"
+  ],
   "license": "MIT",
   "packageManager": "pnpm@10.32.1",
   "devDependencies": {
