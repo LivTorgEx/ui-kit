@@ -24,7 +24,7 @@ export function Logo({ background = "white", className = "", ...props }: LogoPro
       aria-label="LivTorgEx"
       {...props}
     >
-      <rect width="1178" height="1178" fill={{ background }} />
+      <rect width="1178" height="1178" fill={background} />
       <g
         transform="translate(0.000000,1178.000000) scale(0.100000,-0.100000)"
         fill="currentColor"
