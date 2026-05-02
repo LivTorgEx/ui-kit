@@ -9,4 +9,5 @@ export * from "./components/DataRow/DataRow";
 export * from "./components/Skeleton/Skeleton";
 export * from "./components/Spinner/Spinner";
 export * from "./components/StrategyCard/StrategyCard";
+export * from "./components/Logo/Logo";
 export { cn } from "./utils/cn";
