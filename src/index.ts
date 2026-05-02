@@ -8,3 +8,5 @@ export * from "./components/StatTile/StatTile";
 export * from "./components/DataRow/DataRow";
 export * from "./components/Skeleton/Skeleton";
 export * from "./components/Spinner/Spinner";
+export * from "./components/StrategyCard/StrategyCard";
+export { cn } from "./utils/cn";
