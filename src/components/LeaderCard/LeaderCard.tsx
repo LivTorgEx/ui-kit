@@ -95,7 +95,7 @@ export function LeaderCard({
       <div className="px-5 pb-5">
         <a
           href={href}
-          className="block w-full text-center py-2.5 rounded-xl bg-teal-600 hover:bg-teal-500 text-white text-sm font-semibold transition-colors"
+          className="block w-full text-center py-3 rounded-xl bg-teal-600 hover:bg-teal-500 active:bg-teal-700 text-white text-sm font-bold transition-colors"
         >
           View Strategy →
         </a>
