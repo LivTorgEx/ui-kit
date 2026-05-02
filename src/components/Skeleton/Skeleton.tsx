@@ -4,9 +4,15 @@ export interface SkeletonProps {
   variant?: SkeletonVariant;
   width?: string;
   count?: number;
+  className?: string;
 }
 
-export function Skeleton({ variant = "text", width = "w-full", count = 1 }: SkeletonProps) {
+export function Skeleton({
+  variant = "text",
+  width = "w-full",
+  count = 1,
+  className,
+}: SkeletonProps) {
   if (variant === "card") {
     return (
       <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 p-4 space-y-3">
@@ -33,7 +39,7 @@ export function Skeleton({ variant = "text", width = "w-full", count = 1 }: Skel
       {Array.from({ length: count }).map((_, i) => (
         <div
           key={i}
-          className={`${heightClass} rounded-md bg-gray-200 dark:bg-gray-800 animate-pulse ${width}`}
+          className={`${heightClass} rounded-md bg-gray-200 dark:bg-gray-800 animate-pulse ${className ?? width}`}
         />
       ))}
     </div>
