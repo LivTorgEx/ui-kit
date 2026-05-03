@@ -31,7 +31,7 @@ export function LoadingButton({
       {...props}
       disabled={disabled || loading}
       className={cn(
-        "relative inline-flex items-center justify-center gap-2 font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+        "relative inline-flex items-center justify-center cursor-pointer gap-2 font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
         variantClasses[variant],
         className,
       )}

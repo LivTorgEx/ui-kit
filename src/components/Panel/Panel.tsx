@@ -73,13 +73,13 @@ export function Panel({
   return (
     <div
       className={cn(
-        "bg-gray-900 rounded-2xl border border-gray-800",
+        "flex flex-col bg-gray-900 rounded-2xl border border-gray-800",
         paddingMap[padding],
         className,
       )}
     >
-      {title && <p className="text-sm font-medium text-gray-400 mb-4">{title}</p>}
-      {body}
+      {title && <p className="mb-4 shrink-0 text-sm font-medium text-gray-400">{title}</p>}
+      <div className="min-h-0 flex-1">{body}</div>
     </div>
   );
 }
