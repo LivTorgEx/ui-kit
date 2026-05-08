@@ -17,6 +17,8 @@ export * from "./components/Field/index";
 export * from "./components/Panel/index";
 export * from "./components/StatCard/StatCard";
 export * from "./components/LeaderCard/LeaderCard";
+export * from "./components/TradingCalendar/TradingCalendar";
+export * from "./components/CalendarStatsPanel/CalendarStatsPanel";
 export { useConfirmation } from "./hooks/useConfirmation";
 export { ConfirmationProvider } from "./context/ConfirmationContext";
 export { cn } from "./utils/cn";
