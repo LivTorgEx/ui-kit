@@ -3,7 +3,13 @@ import { Spinner } from "../Spinner/Spinner";
 import { Button } from "../Button/Button";
 import { cn } from "../../utils/cn";
 
-export type LoadingButtonVariant = "primary" | "secondary" | "danger" | "success" | "ghost";
+export type LoadingButtonVariant =
+  | "primary"
+  | "secondary"
+  | "danger"
+  | "success"
+  | "ghost"
+  | "icon";
 
 export interface LoadingButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
@@ -13,13 +19,14 @@ export interface LoadingButtonProps extends ButtonHTMLAttributes<HTMLButtonEleme
 
 const variantToButtonVariant: Record<
   LoadingButtonVariant,
-  "primary" | "secondary" | "danger" | "ghost"
+  "primary" | "secondary" | "danger" | "ghost" | "icon"
 > = {
   primary: "primary",
   secondary: "secondary",
   danger: "danger",
   success: "primary",
   ghost: "ghost",
+  icon: "icon",
 };
 
 const extraClasses: Record<LoadingButtonVariant, string> = {
@@ -28,6 +35,7 @@ const extraClasses: Record<LoadingButtonVariant, string> = {
   danger: "",
   success: "bg-green-600 hover:bg-green-500 shadow-sm shadow-green-500/20",
   ghost: "",
+  icon: "",
 };
 
 export function LoadingButton({

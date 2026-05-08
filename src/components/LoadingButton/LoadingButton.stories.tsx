@@ -8,7 +8,7 @@ const meta: Meta<typeof LoadingButton> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["primary", "secondary", "danger", "success", "ghost"],
+      options: ["primary", "secondary", "danger", "success", "ghost", "icon"],
     },
     loading: { control: "boolean" },
     disabled: { control: "boolean" },
@@ -43,6 +43,10 @@ export const Ghost: Story = {
   args: { variant: "ghost", children: "Skip" },
 };
 
+export const Icon: Story = {
+  args: { variant: "icon", children: "I" },
+};
+
 export const Disabled: Story = {
   args: { variant: "primary", disabled: true, children: "Unavailable" },
 };
@@ -55,6 +59,9 @@ export const AllVariants: Story = {
       <LoadingButton variant="danger">Danger</LoadingButton>
       <LoadingButton variant="success">Success</LoadingButton>
       <LoadingButton variant="ghost">Ghost</LoadingButton>
+      <LoadingButton variant="icon" aria-label="Icon">
+        I
+      </LoadingButton>
       <LoadingButton variant="primary" loading>
         Loading…
       </LoadingButton>

@@ -6,7 +6,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   tags: ["autodocs"],
   argTypes: {
-    variant: { control: "select", options: ["primary", "secondary", "ghost", "danger"] },
+    variant: { control: "select", options: ["primary", "secondary", "ghost", "danger", "icon"] },
     size: { control: "select", options: ["sm", "md", "lg"] },
     disabled: { control: "boolean" },
     children: { control: "text" },
@@ -20,6 +20,7 @@ export const Primary: Story = { args: { variant: "primary", children: "Primary B
 export const Secondary: Story = { args: { variant: "secondary", children: "Secondary Button" } };
 export const Ghost: Story = { args: { variant: "ghost", children: "Ghost Button" } };
 export const Danger: Story = { args: { variant: "danger", children: "Danger Button" } };
+export const Icon: Story = { args: { variant: "icon", children: "I" } };
 export const Disabled: Story = {
   args: { variant: "primary", children: "Disabled", disabled: true },
 };
@@ -31,6 +32,9 @@ export const AllVariants: Story = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="danger">Danger</Button>
+      <Button variant="icon" aria-label="Icon">
+        I
+      </Button>
       <Button variant="primary" disabled>
         Disabled
       </Button>
