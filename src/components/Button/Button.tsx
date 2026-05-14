@@ -6,6 +6,13 @@ export type ButtonSize = "sm" | "md" | "lg";
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  /**
+   * Render as a full-width, left-aligned, vertically-stacked clickable block.
+   * Use for list rows, table-like cells, and accordion triggers where a
+   * centered inline-flex pill is the wrong shape. Size padding is dropped so
+   * the consumer can set their own.
+   */
+  block?: boolean;
   children: ReactNode;
 }
 
@@ -30,19 +37,33 @@ const iconSizeClasses: Record<ButtonSize, string> = {
   lg: "h-10 w-10 text-base p-0",
 };
 
+const baseLayoutClasses = "inline-flex items-center justify-center font-semibold rounded-xl";
+const blockLayoutClasses = "flex w-full flex-col items-stretch text-left font-normal rounded-md";
+
 export function Button({
   variant = "primary",
   size = "md",
+  block = false,
   className = "",
   children,
   ...props
 }: ButtonProps) {
-  const resolvedSizeClasses = variant === "icon" ? iconSizeClasses[size] : sizeClasses[size];
+  let resolvedSizeClasses: string;
+  if (block) {
+    // Block layout drops the preset px/py so consumers can pick their own padding.
+    resolvedSizeClasses = "";
+  } else if (variant === "icon") {
+    resolvedSizeClasses = iconSizeClasses[size];
+  } else {
+    resolvedSizeClasses = sizeClasses[size];
+  }
+
+  const layoutClasses = block ? blockLayoutClasses : baseLayoutClasses;
 
   return (
     <button
       {...props}
-      className={`inline-flex items-center justify-center cursor-pointer font-semibold rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses[variant]} ${resolvedSizeClasses} ${className}`}
+      className={`${layoutClasses} cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses[variant]} ${resolvedSizeClasses} ${className}`}
     >
       {children}
     </button>
