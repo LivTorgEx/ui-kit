@@ -4,16 +4,16 @@ import type { ReactNode } from "react";
 export type FieldSize = "md" | "sm";
 
 export const inputBase =
-  "w-full bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:outline-none focus:border-teal-500 transition-colors disabled:opacity-50 disabled:cursor-not-allowed";
+  "w-full rounded-md border border-gray-700 bg-gray-800 text-white placeholder:text-gray-400 transition-colors focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 disabled:cursor-not-allowed disabled:opacity-50";
 
 export const inputSize: Record<FieldSize, string> = {
-  md: "px-4 py-3 rounded-lg",
-  sm: "px-3 py-2.5 rounded-lg text-sm",
+  md: "px-4 py-3 rounded-md",
+  sm: "px-3 py-2.5 rounded-md text-sm",
 };
 
 export const labelSize: Record<FieldSize, string> = {
-  md: "block text-sm text-gray-400 mb-1",
-  sm: "block text-xs text-gray-400 mb-1",
+  md: "block text-sm font-medium text-white mb-2",
+  sm: "block text-xs font-medium text-gray-200 mb-1.5",
 };
 
 export interface FieldWrapperProps {
@@ -37,8 +37,8 @@ export function FieldWrapper({
     <div className={className}>
       {label && <label className={labelSize[fieldSize]}>{label}</label>}
       {children}
-      {error && <p className="text-red-400 text-xs mt-1">{error}</p>}
-      {!error && hint && <p className="text-gray-500 text-xs mt-1">{hint}</p>}
+      {error && <p className="mt-1.5 text-xs text-rose-300">{error}</p>}
+      {!error && hint && <p className="mt-1.5 text-xs text-gray-400">{hint}</p>}
     </div>
   );
 }
@@ -49,5 +49,11 @@ export function inputCn(
   extra?: string,
   className?: string,
 ) {
-  return cn(inputBase, inputSize[fieldSize], error && "border-red-500", extra, className);
+  return cn(
+    inputBase,
+    inputSize[fieldSize],
+    error && "border-rose-400 focus:border-rose-400 focus:ring-rose-400/20",
+    extra,
+    className,
+  );
 }

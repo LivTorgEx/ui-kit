@@ -4,18 +4,18 @@ import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
 
 # Colors
 
-All colors come directly from Tailwind's built-in palette. Do not introduce custom hex values — use the token names below.
+Shared components use a compact exchange palette: mint for actions and selection, amber for attention, and neutral near-black surfaces.
 
 ## Brand Primary
 
 <ColorPalette>
   <ColorItem
-    title="Teal (primary)"
+    title="Mint (primary)"
     subtitle="Main brand accent"
     colors={{
-      "teal-400 #2dd4bf": "#2dd4bf",
-      "teal-500 #14b8a6": "#14b8a6",
-      "teal-600 #0d9488": "#0d9488",
+      "mint primary #42bd91": "#42bd91",
+      "mint hover #54cea1": "#54cea1",
+      "mint light #28b884": "#28b884",
     }}
   />
   <ColorItem
@@ -42,7 +42,7 @@ All colors come directly from Tailwind's built-in palette. Do not introduce cust
       "gray-600 #4b5563": "#4b5563",
       "gray-800 #1f2937": "#1f2937",
       "gray-900 #111827": "#111827",
-      "gray-950 #030712": "#030712",
+      "black #000000": "#000000",
     }}
   />
 </ColorPalette>
@@ -51,19 +51,19 @@ All colors come directly from Tailwind's built-in palette. Do not introduce cust
 
 <ColorPalette>
   <ColorItem
-    title="Status"
+    title="Exchange status"
     subtitle="Success · Danger · Warning"
     colors={{
       "emerald-500 success": "#10b981",
       "red-400 danger/loss": "#f87171",
-      "amber-400 warning/TBA": "#fbbf24",
+      "amber exchange label": "#f3aa32",
     }}
   />
 </ColorPalette>
 
 ## Rules
 
-- Always pair `teal-500` with `hover:teal-600` for interactive elements
+- Use mint (`#42bd91`) for active tabs, selected exchange accounts, and primary actions
 - Use `emerald-500` for positive PnL, confirmed states, and success messages
-- Use `red-400` for losses and errors (slightly softer than `red-500` to reduce alarm fatigue)
-- Use `amber-400` for warnings, pending states, and TBA labels
+- Use `red-400` for losses and errors
+- Use amber (`#f3aa32`) for attention and pending states

@@ -73,7 +73,7 @@ export function Panel({
   return (
     <div
       className={cn(
-        "flex flex-col bg-gray-900 rounded-2xl border border-gray-800",
+        "flex flex-col rounded-xl border border-gray-700 bg-gray-900",
         paddingMap[padding],
         className,
       )}

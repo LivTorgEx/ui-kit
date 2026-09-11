@@ -34,7 +34,7 @@ export const Branded: Story = {
     width: 80,
     height: 80,
     background: "transparent",
-    className: "text-[#122647]",
+    className: "text-slate-900",
   },
 };
 

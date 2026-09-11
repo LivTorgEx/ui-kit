@@ -33,7 +33,7 @@ const extraClasses: Record<LoadingButtonVariant, string> = {
   primary: "",
   secondary: "",
   danger: "",
-  success: "bg-green-600 hover:bg-green-500 shadow-sm shadow-green-500/20",
+  success: "bg-emerald-400 text-emerald-950 shadow-none hover:bg-emerald-300",
   ghost: "",
   icon: "",
 };

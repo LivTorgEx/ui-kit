@@ -1,5 +1,9 @@
 export * from "./components/Button/Button";
 export * from "./components/Badge/Badge";
+export * from "./components/Avatar/Avatar";
+export * from "./components/Icon/Icon";
+export * from "./components/Text/Text";
+export * from "./components/SegmentedControl/SegmentedControl";
 export * from "./components/Card/Card";
 export * from "./components/Input/Input";
 export * from "./components/Select/Select";
@@ -24,6 +28,7 @@ export * from "./components/LeaderCard/LeaderCard";
 export * from "./components/TradingCalendar/TradingCalendar";
 export * from "./components/CalendarStatsPanel/CalendarStatsPanel";
 export * from "./components/Pagination/Pagination";
+export * from "./components/Table/Table";
 export { useConfirmation } from "./hooks/useConfirmation";
 export { ConfirmationProvider } from "./context/ConfirmationContext";
 export { cn } from "./utils/cn";

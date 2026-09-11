@@ -13,7 +13,7 @@ export interface LogoProps extends SVGProps<SVGSVGElement> {
  *
  * Color is controlled via CSS `color` / Tailwind text color classes.
  * The art uses `currentColor`, so you can do:
- *   <Logo className="text-[#122647] dark:text-white" background="transparent" />
+ *   <Logo className="text-slate-900 dark:text-white" background="transparent" />
  */
 export function Logo({ background = "white", className = "", ...props }: LogoProps) {
   return (

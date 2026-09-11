@@ -9,7 +9,7 @@ export interface BadgeProps {
 
 const variantClasses: Record<BadgeVariant, string> = {
   active:
-    "bg-teal-100 dark:bg-teal-500/15 text-teal-700 dark:text-teal-400 border border-teal-200 dark:border-teal-500/30 font-semibold",
+    "border border-teal-200 bg-teal-100 font-semibold text-teal-700 dark:border-emerald-400/30 dark:bg-emerald-400/15 dark:text-emerald-300",
   profit:
     "bg-emerald-100 dark:bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/30 font-semibold",
   loss: "bg-red-100 dark:bg-red-500/15 text-red-700 dark:text-red-400 border border-red-200 dark:border-red-500/30 font-semibold",
@@ -18,7 +18,7 @@ const variantClasses: Record<BadgeVariant, string> = {
   warning:
     "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 font-semibold",
   tba: "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 font-bold",
-  popular: "bg-emerald-400 text-gray-900 font-bold",
+  popular: "bg-amber-400 font-bold text-gray-950",
 };
 
 export function Badge({ variant = "neutral", children }: BadgeProps) {

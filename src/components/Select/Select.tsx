@@ -1,8 +1,10 @@
 import type { SelectHTMLAttributes } from "react";
+import { cn } from "../../utils/cn";
 
 export interface SelectOption {
   value: string;
   label: string;
+  disabled?: boolean;
 }
 
 export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -27,9 +29,10 @@ export function Select({
       {label && (
         <label
           htmlFor={selectId}
-          className={`text-xs font-medium uppercase tracking-wider ${
-            error ? "text-red-500" : "text-gray-500 dark:text-gray-400"
-          }`}
+          className={cn(
+            "text-sm font-medium",
+            error ? "text-rose-400" : "text-gray-700 dark:text-white",
+          )}
         >
           {label}
         </label>
@@ -37,20 +40,22 @@ export function Select({
       <select
         id={selectId}
         {...props}
-        className={`w-full rounded-xl border px-3 py-2.5 text-sm bg-white dark:bg-gray-950 text-gray-900 dark:text-white focus:outline-none focus:ring-2 transition-all ${
+        className={cn(
+          "w-full rounded-md border bg-white px-3 py-2.5 text-sm text-gray-900 transition-all focus:outline-none focus:ring-2 dark:bg-gray-800 dark:text-white",
           error
-            ? "border-red-400 focus:ring-red-500/30 focus:border-red-500"
-            : "border-gray-300 dark:border-gray-700 focus:ring-teal-500/50 focus:border-teal-500"
-        } ${className}`}
+            ? "border-rose-400 focus:border-rose-400 focus:ring-rose-400/20"
+            : "border-gray-300 focus:border-emerald-400 focus:ring-emerald-400/20 dark:border-gray-700",
+          className,
+        )}
       >
         {options.map((opt) => (
-          <option key={opt.value} value={opt.value}>
+          <option key={opt.value} value={opt.value} disabled={opt.disabled}>
             {opt.label}
           </option>
         ))}
       </select>
       {helperText && (
-        <p className={`text-xs ${error ? "text-red-500" : "text-gray-500 dark:text-gray-400"}`}>
+        <p className={cn("text-xs", error ? "text-rose-400" : "text-gray-500 dark:text-gray-400")}>
           {helperText}
         </p>
       )}
