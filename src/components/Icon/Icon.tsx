@@ -5,6 +5,7 @@ export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export type IconSize = "sm" | "md" | "lg";
 export type IconTone =
   | "default"
+  | "dark"
   | "muted"
   | "subtle"
   | "inverse"
@@ -26,6 +27,7 @@ const sizeClasses: Record<IconSize, string> = {
 
 const toneClasses: Record<IconTone, string> = {
   default: "text-gray-700 dark:text-gray-200",
+  dark: "text-gray-950 dark:text-gray-950",
   muted: "text-gray-500 dark:text-gray-400",
   subtle: "text-gray-400 dark:text-gray-600",
   inverse: "text-white",
