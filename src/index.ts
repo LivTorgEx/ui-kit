@@ -10,6 +10,7 @@ export * from "./components/Select/Select";
 export * from "./components/Popover/Popover";
 export * from "./components/Command/Command";
 export * from "./components/AutocompleteMultiselect/AutocompleteMultiselect";
+export * from "./components/Autocomplete/Autocomplete";
 export * from "./components/Drawer/Drawer";
 export * from "./components/Alert/Alert";
 export * from "./components/StatTile/StatTile";

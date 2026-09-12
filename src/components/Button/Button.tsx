@@ -1,7 +1,7 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "../../utils/cn";
 
-export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "icon";
+export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "icon" | "icon-ghost";
 export type ButtonSize = "sm" | "md" | "lg";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -25,6 +25,8 @@ const variantClasses: Record<ButtonVariant, string> = {
     "text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
   danger: "bg-rose-400 text-white hover:bg-rose-300",
   icon: "rounded-md border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-gray-500 dark:hover:bg-gray-700",
+  "icon-ghost":
+    "rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
@@ -54,7 +56,7 @@ export function Button({
   if (block) {
     // Block layout drops the preset px/py so consumers can pick their own padding.
     resolvedSizeClasses = "";
-  } else if (variant === "icon") {
+  } else if (variant === "icon" || variant === "icon-ghost") {
     resolvedSizeClasses = iconSizeClasses[size];
   } else {
     resolvedSizeClasses = sizeClasses[size];

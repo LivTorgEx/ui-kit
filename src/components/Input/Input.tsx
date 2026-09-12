@@ -5,12 +5,14 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   error?: boolean;
   helperText?: string;
+  variant?: "default" | "range";
 }
 
 export function Input({
   label,
   error = false,
   helperText,
+  variant = "default",
   className = "",
   id,
   ...props
@@ -37,6 +39,8 @@ export function Input({
           error
             ? "border-rose-400 focus:border-rose-400 focus:ring-rose-400/20"
             : "border-gray-300 focus:border-emerald-400 focus:ring-emerald-400/20 dark:border-gray-700",
+          variant === "range" &&
+            "appearance-none border-0 bg-transparent px-0 py-1.5 accent-emerald-400 focus:ring-0 dark:bg-transparent",
           className,
         )}
       />

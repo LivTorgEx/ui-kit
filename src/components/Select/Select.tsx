@@ -12,6 +12,7 @@ export interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: SelectOption[];
   error?: boolean;
   helperText?: string;
+  variant?: "default" | "compact";
 }
 
 export function Select({
@@ -19,6 +20,7 @@ export function Select({
   options,
   error = false,
   helperText,
+  variant = "default",
   className = "",
   id,
   ...props
@@ -45,6 +47,8 @@ export function Select({
           error
             ? "border-rose-400 focus:border-rose-400 focus:ring-rose-400/20"
             : "border-gray-300 focus:border-emerald-400 focus:ring-emerald-400/20 dark:border-gray-700",
+          variant === "compact" &&
+            "w-auto min-w-0 border-transparent bg-transparent px-0 py-0 dark:bg-transparent focus:ring-0",
           className,
         )}
       >
