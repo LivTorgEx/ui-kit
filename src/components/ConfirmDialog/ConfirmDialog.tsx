@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect } from "react";
 import { Button } from "../Button/Button";
 import { LoadingButton } from "../LoadingButton/LoadingButton";

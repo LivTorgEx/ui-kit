@@ -1,3 +1,5 @@
+"use client";
+
 import { format } from "date-fns";
 import { useMemo } from "react";
 import { cn } from "../../utils/cn";

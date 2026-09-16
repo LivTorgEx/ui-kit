@@ -1,3 +1,5 @@
+"use client";
+
 import { useId, useMemo, useState } from "react";
 import { Badge, type BadgeVariant } from "../Badge/Badge";
 import { Button } from "../Button/Button";

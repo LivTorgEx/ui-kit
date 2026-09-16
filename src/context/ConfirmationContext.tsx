@@ -1,3 +1,5 @@
+"use client";
+
 import React, { createContext, useCallback, useState } from "react";
 import type { ConfirmationFn } from "../hooks/useConfirmation";
 import { ConfirmDialog } from "../components/ConfirmDialog/ConfirmDialog";
