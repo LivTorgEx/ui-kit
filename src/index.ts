@@ -30,6 +30,8 @@ export * from "./components/TradingCalendar/TradingCalendar";
 export * from "./components/CalendarStatsPanel/CalendarStatsPanel";
 export * from "./components/Pagination/Pagination";
 export * from "./components/Table/Table";
+export * from "./components/DynamicUi/DynamicUiTree";
+export * from "./components/DynamicUi/types";
 export { useConfirmation } from "./hooks/useConfirmation";
 export { ConfirmationProvider } from "./context/ConfirmationContext";
 export { cn } from "./utils/cn";
