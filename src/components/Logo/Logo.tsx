@@ -1,6 +1,6 @@
 import type { SVGProps } from "react";
 
-export interface LogoProps extends SVGProps<SVGSVGElement> {
+export interface LogoProps extends Omit<SVGProps<SVGSVGElement>, "ref"> {
   /**
    * Background fill color. Pass "transparent" for dark-mode usage,
    * "white" (default) for light-mode usage.
