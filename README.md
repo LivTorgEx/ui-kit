@@ -23,6 +23,7 @@ The official design system and React component library for the
 | `Input`    | Text input with label, hint, error states    |
 | `Select`   | Dropdown select                               |
 | `DropdownMenu` | Compact selectable menu with optional descriptions |
+| `Tabs`     | Tab bar with optional dropdown tab               |
 | `Alert`    | Info, success, warning, danger banners       |
 | `StatTile` | KPI / metric tile                             |
 | `DataRow`  | Label / value row for detail views           |

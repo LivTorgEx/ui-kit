@@ -42,14 +42,15 @@ export function SegmentedControl<Value extends string = string>({
           key={option.value}
           variant={variant === "tabs" ? "ghost" : value === option.value ? "secondary" : "ghost"}
           size={size}
+          rounded={variant === "tabs" ? "none" : "md"}
           type="button"
           role="tab"
           aria-selected={value === option.value}
           className={
             variant === "tabs"
               ? value === option.value
-                ? "rounded-none border-b-2 border-emerald-400 bg-transparent text-white hover:bg-transparent hover:text-white"
-                : "rounded-none border-b-2 border-transparent bg-transparent text-gray-400 hover:bg-gray-800 hover:text-white"
+                ? "border-b-2 border-emerald-400 bg-transparent text-white hover:bg-transparent hover:text-white"
+                : "border-b-2 border-transparent bg-transparent text-gray-400 hover:bg-gray-800 hover:text-white"
               : undefined
           }
           onClick={() => onChange(option.value)}

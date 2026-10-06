@@ -3,10 +3,12 @@ import { cn } from "../../utils/cn";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger" | "icon" | "icon-ghost";
 export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonRadius = "md" | "none";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  rounded?: ButtonRadius;
   /**
    * Render as a full-width, left-aligned, vertically-stacked clickable block.
    * Use for list rows, table-like cells, and accordion triggers where a
@@ -29,6 +31,11 @@ const variantClasses: Record<ButtonVariant, string> = {
     "rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
 };
 
+const radiusClasses: Record<ButtonRadius, string> = {
+  md: "rounded-md",
+  none: "rounded-none",
+};
+
 const sizeClasses: Record<ButtonSize, string> = {
   sm: "px-4 py-1.5 text-xs",
   md: "px-6 py-2.5 text-sm",
@@ -41,12 +48,13 @@ const iconSizeClasses: Record<ButtonSize, string> = {
   lg: "h-10 w-10 text-base p-0",
 };
 
-const baseLayoutClasses = "inline-flex items-center justify-center font-semibold rounded-md";
-const blockLayoutClasses = "flex w-full flex-col items-stretch text-left font-normal rounded-md";
+const baseLayoutClasses = "inline-flex items-center justify-center font-semibold";
+const blockLayoutClasses = "flex w-full flex-col items-stretch text-left font-normal";
 
 export function Button({
   variant = "primary",
   size = "md",
+  rounded = "md",
   block = false,
   className = "",
   children,
@@ -72,6 +80,7 @@ export function Button({
         "cursor-pointer transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
         variantClasses[variant],
         resolvedSizeClasses,
+        radiusClasses[rounded],
         className,
       )}
     >
