@@ -22,6 +22,7 @@ The official design system and React component library for the
 | `Card`     | Surface container with header / body / footer |
 | `Input`    | Text input with label, hint, error states    |
 | `Select`   | Dropdown select                               |
+| `DropdownMenu` | Compact selectable menu with optional descriptions |
 | `Alert`    | Info, success, warning, danger banners       |
 | `StatTile` | KPI / metric tile                             |
 | `DataRow`  | Label / value row for detail views           |

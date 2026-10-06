@@ -8,6 +8,7 @@ export * from "./components/Card/Card";
 export * from "./components/Input/Input";
 export * from "./components/Select/Select";
 export * from "./components/Popover/Popover";
+export * from "./components/DropdownMenu/DropdownMenu";
 export * from "./components/Dialog/Dialog";
 export * from "./components/Command/Command";
 export * from "./components/AutocompleteMultiselect/AutocompleteMultiselect";
