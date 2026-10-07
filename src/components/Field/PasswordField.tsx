@@ -1,7 +1,7 @@
 "use client";
 import { forwardRef, useState } from "react";
 import { FieldWrapper, inputCn } from "./_base";
-import type { FieldSize } from "./_base";
+import type { FieldSize, FieldVariant } from "./_base";
 import type { TextFieldProps } from "./TextField";
 
 export type PasswordFieldProps = Omit<TextFieldProps, "type">;
@@ -47,7 +47,17 @@ function EyeOffIcon() {
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
   (
-    { label, error, hint, fieldSize = "md" as FieldSize, wrapperClassName, className, ...props },
+    {
+      label,
+      error,
+      hint,
+      fieldSize = "md" as FieldSize,
+      variant = "default" as FieldVariant,
+      grouped = false,
+      wrapperClassName,
+      className,
+      ...props
+    },
     ref,
   ) => {
     const [visible, setVisible] = useState(false);
@@ -57,13 +67,14 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         error={error}
         hint={hint}
         fieldSize={fieldSize}
+        variant={variant}
         className={wrapperClassName}
       >
         <div className="relative">
           <input
             ref={ref}
             type={visible ? "text" : "password"}
-            className={inputCn(fieldSize, error, "pr-10", className)}
+            className={inputCn(fieldSize, error, "pr-10", className, variant, grouped)}
             {...props}
           />
           <button

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Card } from "../../Card/Card";
-import { SegmentedControl } from "../../SegmentedControl/SegmentedControl";
+import { GroupButton } from "../../Field/GroupButton";
 import { Text } from "../../Text/Text";
 import { getDynamicUiTitle } from "../utils";
 import type { DynamicUiNode, DynamicUiNodeRendererProps } from "../types";
@@ -30,8 +30,8 @@ export function DynamicUiTabs<TNode extends DynamicUiNode>({
       <Text as="h3" variant="body-sm" weight="semibold">
         {title}
       </Text>
-      <SegmentedControl
-        variant="tabs"
+      <GroupButton
+        appearance="tabs"
         ariaLabel={title}
         options={childNodes.map((node) => ({
           value: node.id,
