@@ -1,8 +1,8 @@
 "use client";
 
-import { useId, useMemo, useState } from "react";
+import { useId, useMemo, useState, type ReactNode } from "react";
 import { Badge, type BadgeVariant } from "../Badge/Badge";
-import { Button } from "../Button/Button";
+import { Button, type ButtonRadius, type ButtonSize, type ButtonVariant } from "../Button/Button";
 import {
   Command,
   CommandEmpty,
@@ -43,6 +43,10 @@ export interface AutocompleteProps<V extends string | number> {
   variant?: "default" | "compact";
   contentWidth?: "trigger" | "wide";
   endIcon?: IconComponent;
+  triggerContent?: ReactNode;
+  triggerVariant?: ButtonVariant;
+  triggerSize?: ButtonSize;
+  triggerRounded?: ButtonRadius;
   className?: string;
   disabled?: boolean;
 }
@@ -58,6 +62,10 @@ export function Autocomplete<V extends string | number>({
   variant = "default",
   contentWidth = "trigger",
   endIcon,
+  triggerContent,
+  triggerVariant,
+  triggerSize = "sm",
+  triggerRounded,
   className,
   disabled = false,
 }: AutocompleteProps<V>) {
@@ -93,42 +101,53 @@ export function Autocomplete<V extends string | number>({
             role="combobox"
             aria-expanded={open}
             disabled={disabled}
-            variant={variant === "compact" ? "ghost" : "secondary"}
-            size="sm"
-            className="w-full justify-between gap-3 text-left"
+            variant={triggerVariant ?? (variant === "compact" ? "ghost" : "secondary")}
+            size={triggerSize}
+            rounded={triggerRounded}
+            className={
+              triggerSize === "inline" ? undefined : "w-full justify-between gap-3 text-left"
+            }
           >
-            <div className="min-w-0 flex-1">
-              <div className="flex min-w-0 items-center gap-2">
-                <Text
-                  as="span"
-                  variant="body-sm"
-                  tone={selectedOption ? (variant === "compact" ? "inverse" : "default") : "muted"}
-                  weight={selectedOption ? "medium" : "normal"}
-                  truncate
-                >
-                  {selectedOption?.label ?? placeholder}
-                </Text>
-                {selectedOption?.badge && (
-                  <Badge variant={selectedOption.badge.variant}>{selectedOption.badge.label}</Badge>
+            {triggerContent ?? (
+              <>
+                <div className="min-w-0 flex-1">
+                  <div className="flex min-w-0 items-center gap-2">
+                    <Text
+                      as="span"
+                      variant="body-sm"
+                      tone={
+                        selectedOption ? (variant === "compact" ? "inverse" : "default") : "muted"
+                      }
+                      weight={selectedOption ? "medium" : "normal"}
+                      truncate
+                    >
+                      {selectedOption?.label ?? placeholder}
+                    </Text>
+                    {selectedOption?.badge && (
+                      <Badge variant={selectedOption.badge.variant}>
+                        {selectedOption.badge.label}
+                      </Badge>
+                    )}
+                  </div>
+                  {selectedOption?.hint && (
+                    <Text as="span" variant="caption" tone="muted" truncate>
+                      {selectedOption.hint}
+                    </Text>
+                  )}
+                </div>
+                {selectedOption?.metric && (
+                  <div className="flex shrink-0 items-baseline justify-end gap-1 text-right">
+                    <Text as="span" variant="label" tone="subtle">
+                      {selectedOption.metric.label}
+                    </Text>
+                    <Text as="span" variant="metric" tone="inverse" weight="semibold">
+                      {selectedOption.metric.value}
+                    </Text>
+                  </div>
                 )}
-              </div>
-              {selectedOption?.hint && (
-                <Text as="span" variant="caption" tone="muted" truncate>
-                  {selectedOption.hint}
-                </Text>
-              )}
-            </div>
-            {selectedOption?.metric && (
-              <div className="flex shrink-0 items-baseline justify-end gap-1 text-right">
-                <Text as="span" variant="label" tone="subtle">
-                  {selectedOption.metric.label}
-                </Text>
-                <Text as="span" variant="metric" tone="inverse" weight="semibold">
-                  {selectedOption.metric.value}
-                </Text>
-              </div>
+                {endIcon && <Icon icon={endIcon} size="sm" tone="muted" />}
+              </>
             )}
-            {endIcon && <Icon icon={endIcon} size="sm" tone="muted" />}
           </Button>
         </PopoverTrigger>
         <PopoverContent
