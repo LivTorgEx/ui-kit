@@ -1,5 +1,17 @@
-export { FieldWrapper, inputBase, inputSize, labelSize, inputCn } from "./_base";
-export type { FieldSize, FieldVariant, FieldWrapperProps } from "./_base";
+export { FieldWrapper } from "./FieldWrapper";
+export type { FieldWrapperProps } from "./FieldWrapper";
+export type { FieldSize, FieldVariant } from "./_base";
+
+export { InputGroup } from "./InputGroup";
+export type { InputGroupProps, InputGroupSize } from "./InputGroup";
+
+export { InputGroupAddon } from "./InputGroupAddon";
+export type {
+  InputGroupAddonProps,
+  InputGroupAddonPosition,
+  InputGroupAddonSize,
+  InputGroupAddonTone,
+} from "./InputGroupAddon";
 
 export { TextField } from "./TextField";
 export type { TextFieldProps } from "./TextField";

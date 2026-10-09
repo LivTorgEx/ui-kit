@@ -268,7 +268,6 @@ export function SchemaFields({
                         hint={variant.description}
                         fieldSize={fieldSize}
                         variant={inputVariant}
-                        grouped
                         value={String(variant.const)}
                         disabled
                       />
@@ -287,7 +286,6 @@ export function SchemaFields({
                         hint={variant.description}
                         fieldSize={fieldSize}
                         variant={inputVariant}
-                        grouped
                         resize="vertical"
                         monospace
                         rows={3}
@@ -306,7 +304,6 @@ export function SchemaFields({
                         hint={variant.description}
                         fieldSize={fieldSize}
                         variant={inputVariant}
-                        grouped
                         type={
                           variantType === "integer" || variantType === "number" ? "number" : "text"
                         }

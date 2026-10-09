@@ -1,19 +1,20 @@
 import { forwardRef } from "react";
 import type { TextareaHTMLAttributes, ReactNode } from "react";
-import { cn } from "../../utils/cn";
-import { FieldWrapper, inputCn } from "./_base";
+import { FieldWrapper } from "./FieldWrapper";
+import { inputControlClassName } from "./_base";
 import type { FieldSize, FieldVariant } from "./_base";
 
-export interface TextareaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaFieldProps extends Omit<
+  TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "className"
+> {
   label?: ReactNode;
   error?: string;
   hint?: string;
   fieldSize?: FieldSize;
   variant?: FieldVariant;
-  grouped?: boolean;
   resize?: "none" | "vertical";
   monospace?: boolean;
-  wrapperClassName?: string;
 }
 
 export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>(
@@ -24,33 +25,23 @@ export const TextareaField = forwardRef<HTMLTextAreaElement, TextareaFieldProps>
       hint,
       fieldSize = "md",
       variant = "default",
-      grouped = false,
       resize = "none",
       monospace = false,
-      wrapperClassName,
-      className,
       ...props
     },
     ref,
   ) => (
-    <FieldWrapper
-      label={label}
-      error={error}
-      hint={hint}
-      fieldSize={fieldSize}
-      variant={variant}
-      className={wrapperClassName}
-    >
+    <FieldWrapper label={label} error={error} hint={hint} fieldSize={fieldSize} variant={variant}>
       <textarea
         ref={ref}
-        className={inputCn(
+        className={inputControlClassName({
           fieldSize,
           error,
-          cn(resize === "vertical" ? "resize-y" : "resize-none", monospace && "font-mono"),
-          className,
           variant,
-          grouped,
-        )}
+          control: "textarea",
+          resize,
+          monospace,
+        })}
         {...props}
       />
     </FieldWrapper>

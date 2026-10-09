@@ -2,7 +2,8 @@ import { useId, type KeyboardEvent, type ReactNode } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { Button, type ButtonSize, type ButtonVariant } from "../Button/Button";
 import { cn } from "../../utils/cn";
-import { FieldWrapper, type FieldSize, type FieldVariant } from "./_base";
+import { FieldWrapper } from "./FieldWrapper";
+import type { FieldSize, FieldVariant } from "./_base";
 
 const groupButtonVariants = cva("inline-flex", {
   variants: {

@@ -1,8 +1,10 @@
 "use client";
 import { forwardRef, useState } from "react";
-import { FieldWrapper, inputCn } from "./_base";
-import type { FieldSize, FieldVariant } from "./_base";
+import { FieldWrapper } from "./FieldWrapper";
+import { InputGroup } from "./InputGroup";
+import { InputGroupAddon } from "./InputGroupAddon";
 import type { TextFieldProps } from "./TextField";
+import { TextField } from "./TextField";
 
 export type PasswordFieldProps = Omit<TextFieldProps, "type">;
 
@@ -46,47 +48,29 @@ function EyeOffIcon() {
 }
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
-  (
-    {
-      label,
-      error,
-      hint,
-      fieldSize = "md" as FieldSize,
-      variant = "default" as FieldVariant,
-      grouped = false,
-      wrapperClassName,
-      className,
-      ...props
-    },
-    ref,
-  ) => {
+  ({ label, error, hint, fieldSize = "md", variant = "default", ...props }, ref) => {
     const [visible, setVisible] = useState(false);
     return (
-      <FieldWrapper
-        label={label}
-        error={error}
-        hint={hint}
-        fieldSize={fieldSize}
-        variant={variant}
-        className={wrapperClassName}
-      >
-        <div className="relative">
-          <input
+      <FieldWrapper label={label} error={error} hint={hint} fieldSize={fieldSize} variant={variant}>
+        <InputGroup size={fieldSize} variant={variant} invalid={Boolean(error)}>
+          <TextField
+            {...props}
             ref={ref}
             type={visible ? "text" : "password"}
-            className={inputCn(fieldSize, error, "pr-10", className, variant, grouped)}
-            {...props}
+            fieldSize={fieldSize}
+            variant={variant}
+            aria-invalid={Boolean(error)}
           />
-          <button
-            type="button"
-            tabIndex={-1}
-            onClick={() => setVisible((v) => !v)}
-            className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-200 transition-colors"
+          <InputGroupAddon
+            position="end"
+            size={fieldSize}
             aria-label={visible ? "Hide password" : "Show password"}
+            aria-pressed={visible}
+            onClick={() => setVisible((current) => !current)}
           >
             {visible ? <EyeOffIcon /> : <EyeIcon />}
-          </button>
-        </div>
+          </InputGroupAddon>
+        </InputGroup>
       </FieldWrapper>
     );
   },

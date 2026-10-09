@@ -66,6 +66,12 @@ const buttonVariants = cva(
         block: false,
         className: "h-10 w-10 p-0 text-base",
       },
+      {
+        variant: "text",
+        size: "xs",
+        block: false,
+        className: "h-auto w-fit justify-start gap-1 p-0 text-xs font-normal",
+      },
     ],
     defaultVariants: {
       variant: "primary",
