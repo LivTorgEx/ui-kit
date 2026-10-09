@@ -1,6 +1,7 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
-import { Spinner } from "../Spinner/Spinner";
-import { Button } from "../Button/Button";
+"use client";
+
+import { useEffect, useRef, type ButtonHTMLAttributes, type ReactNode } from "react";
+import { Button, type ButtonRadius, type ButtonSize } from "../Button/Button";
 import { cn } from "../../utils/cn";
 
 export type LoadingButtonVariant =
@@ -14,6 +15,8 @@ export type LoadingButtonVariant =
 export interface LoadingButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
   variant?: LoadingButtonVariant;
+  size?: ButtonSize;
+  rounded?: ButtonRadius;
   children: ReactNode;
 }
 
@@ -41,20 +44,53 @@ const extraClasses: Record<LoadingButtonVariant, string> = {
 export function LoadingButton({
   loading,
   variant = "primary",
+  size = "md",
+  rounded = "md",
   disabled,
   children,
   className,
   ...props
 }: LoadingButtonProps) {
+  const sweepRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!loading || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+    const sweep = sweepRef.current;
+    if (!sweep) return;
+
+    const animation = sweep.animate(
+      [{ backgroundPosition: "100% 0%" }, { backgroundPosition: "0% 0%" }],
+      { duration: 1200, easing: "linear", iterations: Infinity },
+    );
+    return () => animation.cancel();
+  }, [loading]);
+
   return (
     <Button
       {...props}
       variant={variantToButtonVariant[variant]}
+      size={size}
+      rounded={rounded}
       disabled={disabled || loading}
-      className={cn("gap-2", extraClasses[variant], className)}
+      aria-busy={loading || undefined}
+      className={cn(
+        "gap-2",
+        loading && "relative disabled:opacity-100",
+        extraClasses[variant],
+        className,
+      )}
     >
-      {loading && <Spinner size="sm" />}
-      {children}
+      {loading ? (
+        <span
+          ref={sweepRef}
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 rounded-[inherit] bg-gradient-to-r from-transparent via-white/45 to-transparent"
+          style={{ backgroundSize: "200% 100%" }}
+        />
+      ) : null}
+      <span className="relative z-10">{children}</span>
     </Button>
   );
 }

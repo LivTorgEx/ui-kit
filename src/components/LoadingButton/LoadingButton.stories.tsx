@@ -24,7 +24,12 @@ export const Primary: Story = {
 };
 
 export const Loading: Story = {
-  args: { variant: "primary", loading: true, children: "Saving…" },
+  args: {
+    variant: "danger",
+    size: "xs",
+    loading: true,
+    children: "Close all",
+  },
 };
 
 export const Secondary: Story = {
