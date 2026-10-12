@@ -52,7 +52,7 @@ const buttonVariants = cva(
         variant: ["icon", "icon-ghost"],
         size: "sm",
         block: false,
-        className: "h-8 w-8 p-0 text-xs",
+        className: "h-9 w-9 p-0 text-xs",
       },
       {
         variant: ["icon", "icon-ghost"],

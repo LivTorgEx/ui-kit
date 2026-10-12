@@ -44,7 +44,10 @@ export type SchemaFieldValue =
 export type SchemaFieldsProps = {
   schema: SchemaFieldsDefinition;
   values: Record<string, SchemaFieldValue>;
+  selectedVariantTypes?: Record<string, string>;
+  selectedVariantIndices?: Record<string, number>;
   onChange: (name: string, value: SchemaFieldValue, selectedVariantType?: string) => void;
+  onVariantIndexChange?: (name: string, index: number) => void;
   fieldSize?: FieldSize;
   inputVariant?: FieldVariant;
   idPrefix?: string;
@@ -160,7 +163,10 @@ function eventValue(
 export function SchemaFields({
   schema,
   values,
+  selectedVariantTypes,
+  selectedVariantIndices,
   onChange,
+  onVariantIndexChange,
   fieldSize = "sm",
   idPrefix = "schema-field",
   disabled = false,
@@ -203,8 +209,33 @@ export function SchemaFields({
           const matchedIndex = variants.findIndex((variant) =>
             matchesVariant(variant, currentValue),
           );
+          const exactValueIndex = variants.findIndex(
+            (variant) =>
+              (Object.prototype.hasOwnProperty.call(variant, "const") ||
+                Boolean(variant.enum?.length)) &&
+              matchesVariant(variant, currentValue),
+          );
+          const variantTypeMatches = variants.flatMap((variant, index) =>
+            fieldType(variant) === selectedVariantTypes?.[name] ? [index] : [],
+          );
+          const selectedTypeIndex = variantTypeMatches.length === 1 ? variantTypeMatches[0] : -1;
+          const selectedVariantIndex = selectedVariantIndices?.[name];
+          const validSelectedVariantIndex =
+            selectedVariantIndex !== undefined &&
+            Number.isInteger(selectedVariantIndex) &&
+            selectedVariantIndex >= 0 &&
+            selectedVariantIndex < variants.length
+              ? selectedVariantIndex
+              : -1;
           const pendingIndex = pendingVariantIndices[name];
-          const variantIndex = pendingIndex ?? matchedIndex;
+          const variantIndex =
+            validSelectedVariantIndex >= 0
+              ? validSelectedVariantIndex
+              : exactValueIndex >= 0
+                ? exactValueIndex
+                : selectedTypeIndex >= 0
+                  ? selectedTypeIndex
+                  : (pendingIndex ?? matchedIndex);
           const variant = variantIndex >= 0 ? variants[variantIndex] : undefined;
           const selectedValue = (currentValue ??
             (variant ? variantDefault(variant) : "")) as SchemaFieldValue;
@@ -214,6 +245,7 @@ export function SchemaFields({
             const nextVariant = variants[nextIndex];
             if (!nextVariant) return;
             setPendingVariantIndices((current) => ({ ...current, [name]: nextIndex }));
+            onVariantIndexChange?.(name, nextIndex);
             onChange(name, variantDefault(nextVariant), fieldType(nextVariant));
           };
           const setVariantValue = (nextValue: SchemaFieldValue) =>
