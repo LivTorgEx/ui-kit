@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Card } from "../../Card/Card";
 import { GroupButton } from "../../Field/GroupButton";
-import { Text } from "../../Text/Text";
 import { getDynamicUiTitle } from "../utils";
 import type { DynamicUiNode, DynamicUiNodeRendererProps } from "../types";
 
@@ -15,23 +13,12 @@ export function DynamicUiTabs<TNode extends DynamicUiNode>({
   const [selectedNodeId, setSelectedNodeId] = useState(childNodes[0]?.id ?? "");
   const selectedNode = childNodes.find((node) => node.id === selectedNodeId) ?? childNodes[0];
 
-  if (childNodes.length === 0) {
-    return (
-      <Card className="space-y-3">
-        <Text as="h3" variant="body-sm" weight="semibold">
-          {title}
-        </Text>
-      </Card>
-    );
-  }
+  if (childNodes.length === 0) return null;
 
   return (
-    <Card className="space-y-3">
-      <Text as="h3" variant="body-sm" weight="semibold">
-        {title}
-      </Text>
+    <div className="space-y-3">
       <GroupButton
-        appearance="tabs"
+        appearance="pills"
         ariaLabel={title}
         options={childNodes.map((node) => ({
           value: node.id,
@@ -39,8 +26,12 @@ export function DynamicUiTabs<TNode extends DynamicUiNode>({
         }))}
         value={selectedNode?.id ?? childNodes[0].id}
         onChange={setSelectedNodeId}
+        size="md"
+        controlClassName={
+          childNodes.length === 1 ? "w-full [&>button]:w-1/3 [&>button]:flex-none" : "w-full"
+        }
       />
       {selectedNode ? renderNode(selectedNode) : null}
-    </Card>
+    </div>
   );
 }

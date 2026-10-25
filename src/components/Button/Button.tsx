@@ -23,6 +23,10 @@ const buttonVariants = cva(
         tab: "border-b-2 border-transparent bg-transparent text-gray-400 hover:bg-gray-800 hover:text-white",
         "tab-selected":
           "border-b-2 border-emerald-400 bg-transparent text-white hover:bg-transparent hover:text-white",
+        "tab-pill":
+          "bg-transparent text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
+        "tab-pill-selected":
+          "bg-teal-50 text-teal-700 hover:bg-teal-100 dark:bg-teal-900/40 dark:text-teal-400 dark:hover:bg-teal-900/60 dark:hover:text-teal-300",
       },
       size: {
         xs: "px-2 py-1 text-xs leading-4",

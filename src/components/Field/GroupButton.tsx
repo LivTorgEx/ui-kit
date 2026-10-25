@@ -11,6 +11,8 @@ const groupButtonVariants = cva("inline-flex", {
       segmented:
         "rounded-md border border-gray-300 bg-gray-50 p-1 dark:border-gray-700 dark:bg-gray-900",
       tabs: "max-w-full gap-1 overflow-x-auto rounded-none border-0 bg-transparent p-0 dark:bg-transparent",
+      pills:
+        "flex max-w-full gap-1 overflow-x-auto rounded-none border-0 bg-transparent p-0 dark:bg-transparent",
       compact:
         "max-w-full overflow-hidden [&>button:not(:last-child)]:border-r [&>button:not(:last-child)]:border-gray-700 [&>button:first-child]:pl-1 [&>button:focus-visible]:relative [&>button:focus-visible]:z-10 [&>button:focus-visible]:outline-none [&>button:focus-visible]:ring-2 [&>button:focus-visible]:ring-inset [&>button:focus-visible]:ring-emerald-400",
     },
@@ -41,6 +43,7 @@ type SelectionState = "selected" | "unselected";
 const optionButtonVariants: Record<GroupButtonAppearance, Record<SelectionState, ButtonVariant>> = {
   segmented: { selected: "secondary", unselected: "ghost" },
   tabs: { selected: "tab-selected", unselected: "tab" },
+  pills: { selected: "tab-pill-selected", unselected: "tab-pill" },
   compact: { selected: "choice-selected", unselected: "choice" },
 };
 
@@ -91,7 +94,7 @@ export function GroupButton<Value extends string = string>({
   const generatedId = useId();
   const groupId = `${generatedId}-group`;
   const labelId = `${generatedId}-label`;
-  const isTabGroup = appearance === "tabs";
+  const isTabGroup = appearance === "tabs" || appearance === "pills";
   const selectedIndex = options.findIndex((option) => option.value === value);
 
   const handleOptionKeyDown = (event: KeyboardEvent<HTMLButtonElement>, index: number) => {
@@ -153,6 +156,11 @@ export function GroupButton<Value extends string = string>({
               variant={optionButtonVariants[appearance][selectionState]}
               size={appearance === "compact" ? "xs" : size}
               rounded={appearance === "compact" || appearance === "tabs" ? "none" : "md"}
+              className={
+                appearance === "pills"
+                  ? "flex-1 whitespace-nowrap rounded-2xl px-3 py-2.5 text-sm"
+                  : undefined
+              }
               type="button"
               role={isTabGroup ? "tab" : "radio"}
               aria-checked={isTabGroup ? undefined : selected}

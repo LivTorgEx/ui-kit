@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Card } from "../Card/Card";
 import { DynamicUiButton } from "./nodes/DynamicUiButton";
 import { DynamicUiButtonLink } from "./nodes/DynamicUiButtonLink";
 import { DynamicUiDetail } from "./nodes/DynamicUiDetail";
@@ -66,9 +65,9 @@ export function DynamicUiTree<TNode extends DynamicUiNode>({
   };
 
   return (
-    <Card className="space-y-4 border-0 bg-transparent p-0 shadow-none hover:border-transparent dark:bg-transparent">
+    <div className="w-full space-y-4">
       {(childrenByParent.get(null) ?? []).map(renderNode)}
-    </Card>
+    </div>
   );
 }
 
