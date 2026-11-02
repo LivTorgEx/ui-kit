@@ -1,3 +1,5 @@
+"use client";
+
 import { createContext, useContext, type ComponentPropsWithoutRef } from "react";
 import { cn } from "../../utils/cn";
 
