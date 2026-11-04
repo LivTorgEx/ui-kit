@@ -27,6 +27,18 @@ export const LastPage: Story = {
   args: { page: 4, totalPages: 5 },
 };
 
+export const ManyPages: Story = {
+  args: { page: 9, totalPages: 24 },
+};
+
+export const ManyPagesAtStart: Story = {
+  args: { page: 0, totalPages: 24 },
+};
+
+export const ManyPagesAtEnd: Story = {
+  args: { page: 23, totalPages: 24 },
+};
+
 export const SinglePage: Story = {
   args: { page: 0, totalPages: 1 },
 };
