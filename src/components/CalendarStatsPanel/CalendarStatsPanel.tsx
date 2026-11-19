@@ -3,6 +3,7 @@
 import { format } from "date-fns";
 import { useMemo } from "react";
 import { cn } from "../../utils/cn";
+import { Panel } from "../Panel/Panel";
 
 export interface CalendarDayStats {
   pnl: number;
@@ -44,10 +45,10 @@ function StatSection({
   className?: string;
 }) {
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900 p-4">
+    <Panel padding="sm">
       <p className="text-[11px] uppercase tracking-[0.08em] text-gray-500">{label}</p>
       <p className={cn("mt-1 text-lg font-semibold text-gray-100", className)}>{value}</p>
-    </div>
+    </Panel>
   );
 }
 

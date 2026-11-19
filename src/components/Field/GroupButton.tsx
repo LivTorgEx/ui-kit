@@ -14,7 +14,7 @@ const groupButtonVariants = cva("inline-flex", {
       pills:
         "flex max-w-full gap-1 overflow-x-auto rounded-none border-0 bg-transparent p-0 dark:bg-transparent",
       compact:
-        "max-w-full overflow-hidden [&>button:not(:last-child)]:border-r [&>button:not(:last-child)]:border-gray-700 [&>button:first-child]:pl-1 [&>button:focus-visible]:relative [&>button:focus-visible]:z-10 [&>button:focus-visible]:outline-none [&>button:focus-visible]:ring-2 [&>button:focus-visible]:ring-inset [&>button:focus-visible]:ring-emerald-400",
+        "max-w-full [&>button:not(:last-child)]:border-r [&>button:not(:last-child)]:border-gray-700 [&>button:focus-visible]:relative [&>button:focus-visible]:z-10 [&>button:focus-visible]:outline-none [&>button:focus-visible]:ring-2 [&>button:focus-visible]:ring-inset [&>button:focus-visible]:ring-emerald-400",
     },
     bordered: {
       true: "",
@@ -83,7 +83,7 @@ export function GroupButton<Value extends string = string>({
   fieldSize = "sm",
   fieldVariant = "default",
   appearance = "segmented",
-  size = "sm",
+  size = appearance === "compact" ? "xs" : "sm",
   bordered = true,
   ariaLabel,
   name,
@@ -154,7 +154,7 @@ export function GroupButton<Value extends string = string>({
             <Button
               key={option.value}
               variant={optionButtonVariants[appearance][selectionState]}
-              size={appearance === "compact" ? "xs" : size}
+              size={size}
               rounded={appearance === "compact" || appearance === "tabs" ? "none" : "md"}
               className={
                 appearance === "pills"

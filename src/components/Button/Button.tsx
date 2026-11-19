@@ -7,19 +7,20 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        primary: "bg-emerald-400 text-emerald-950 shadow-none hover:bg-emerald-300",
+        primary:
+          "border border-transparent bg-emerald-400 text-emerald-950 shadow-none hover:bg-emerald-300",
         secondary:
           "border border-gray-300 bg-white text-gray-700 hover:border-emerald-400 hover:text-emerald-400 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:text-emerald-300",
         ghost:
           "text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
         text: "bg-transparent text-gray-400 hover:bg-transparent hover:text-gray-100 focus-visible:ring-1 focus-visible:ring-teal-500",
-        danger: "bg-rose-400 text-white hover:bg-rose-300",
+        danger: "border border-transparent bg-rose-400 text-white hover:bg-rose-300",
         icon: "border border-gray-300 bg-white text-gray-700 hover:border-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-200 dark:hover:border-gray-500 dark:hover:bg-gray-700",
         "icon-ghost":
           "text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-white",
         choice: "bg-black text-gray-400 hover:bg-gray-800 hover:text-gray-100 dark:bg-black",
         "choice-selected":
-          "bg-gray-700 text-white hover:bg-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:hover:text-white",
+          "bg-emerald-400/10 text-emerald-300 ring-1 ring-inset ring-emerald-400/35 hover:bg-emerald-400/15 dark:bg-emerald-400/10 dark:text-emerald-300 dark:hover:bg-emerald-400/15",
         tab: "border-b-2 border-transparent bg-transparent text-gray-400 hover:bg-gray-800 hover:text-white",
         "tab-selected":
           "border-b-2 border-emerald-400 bg-transparent text-white hover:bg-transparent hover:text-white",

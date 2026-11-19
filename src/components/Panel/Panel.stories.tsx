@@ -11,6 +11,10 @@ const panelMeta: Meta<typeof Panel> = {
   tags: ["autodocs"],
   argTypes: {
     padding: { control: "select", options: ["none", "sm", "md", "lg"] },
+    rounded: {
+      control: "select",
+      options: ["none", "sm", "md", "lg", "xl", "2xl", "3xl"],
+    },
     loading: { control: "boolean" },
     empty: { control: "boolean" },
     title: { control: "text" },
@@ -27,6 +31,7 @@ export const Default: PanelStory = {
   args: {
     title: "My Panel",
     padding: "md",
+    rounded: "none",
     children: (
       <p className="text-gray-300 text-sm">
         Panel content goes here. Use <code>loading</code> or <code>empty</code> props to switch

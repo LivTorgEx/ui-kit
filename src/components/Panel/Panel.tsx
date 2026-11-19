@@ -2,13 +2,16 @@ import { cn } from "../../utils/cn";
 import { EmptyState } from "./EmptyState";
 import type { ReactNode } from "react";
 
-export type PanelPadding = "none" | "sm" | "md" | "lg";
+type PanelPadding = "none" | "sm" | "md" | "lg";
+type PanelRadius = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 
 export interface PanelProps {
   children?: ReactNode;
   title?: ReactNode;
   className?: string;
   padding?: PanelPadding;
+  /** Corner radius. Defaults to square. */
+  rounded?: PanelRadius;
 
   loading?: boolean;
   skeleton?: ReactNode;
@@ -28,6 +31,16 @@ const paddingMap: Record<PanelPadding, string> = {
   lg: "p-8",
 };
 
+const roundedMap: Record<PanelRadius, string> = {
+  none: "rounded-none",
+  sm: "rounded-sm",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl",
+  "2xl": "rounded-2xl",
+  "3xl": "rounded-3xl",
+};
+
 function DefaultSkeleton() {
   return (
     <div className="space-y-3">
@@ -43,6 +56,7 @@ export function Panel({
   title,
   className,
   padding = "md",
+  rounded = "none",
   loading = false,
   skeleton,
   skeletonCount = 3,
@@ -73,8 +87,9 @@ export function Panel({
   return (
     <div
       className={cn(
-        "flex flex-col rounded-xl border border-gray-700 bg-gray-900",
+        "flex flex-col border border-gray-700 bg-gray-900",
         paddingMap[padding],
+        roundedMap[rounded],
         className,
       )}
     >
