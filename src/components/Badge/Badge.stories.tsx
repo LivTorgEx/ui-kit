@@ -8,7 +8,17 @@ const meta: Meta<typeof Badge> = {
   argTypes: {
     variant: {
       control: "select",
-      options: ["active", "profit", "loss", "neutral", "warning", "tba", "popular"],
+      options: [
+        "active",
+        "profit",
+        "loss",
+        "neutral",
+        "warning",
+        "tba",
+        "popular",
+        "long",
+        "short",
+      ],
     },
     children: { control: "text" },
   },
@@ -24,6 +34,8 @@ export const Neutral: Story = { args: { variant: "neutral", children: "Stopped" 
 export const Warning: Story = { args: { variant: "warning", children: "Paused" } };
 export const Tba: Story = { args: { variant: "tba", children: "TBA" } };
 export const Popular: Story = { args: { variant: "popular", children: "Most Popular" } };
+export const Long: Story = { args: { variant: "long", children: "LONG" } };
+export const Short: Story = { args: { variant: "short", children: "SHORT" } };
 
 export const AllVariants: Story = {
   render: () => (
@@ -35,6 +47,8 @@ export const AllVariants: Story = {
       <Badge variant="warning">Paused</Badge>
       <Badge variant="tba">TBA</Badge>
       <Badge variant="popular">Most Popular</Badge>
+      <Badge variant="long">LONG</Badge>
+      <Badge variant="short">SHORT</Badge>
     </div>
   ),
 };

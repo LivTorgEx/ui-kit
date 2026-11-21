@@ -1,6 +1,15 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
-export type BadgeVariant = "active" | "profit" | "loss" | "neutral" | "warning" | "tba" | "popular";
+export type BadgeVariant =
+  | "active"
+  | "profit"
+  | "loss"
+  | "neutral"
+  | "warning"
+  | "tba"
+  | "popular"
+  | "long"
+  | "short";
 
 export interface BadgeProps {
   variant?: BadgeVariant;
@@ -19,11 +28,29 @@ const variantClasses: Record<BadgeVariant, string> = {
     "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 font-semibold",
   tba: "bg-amber-100 dark:bg-amber-500/15 text-amber-700 dark:text-amber-400 border border-amber-200 dark:border-amber-500/30 font-bold",
   popular: "bg-amber-400 font-bold text-gray-950",
+  long: "border font-semibold",
+  short: "border font-semibold",
+};
+
+const directionStyles: Partial<Record<BadgeVariant, CSSProperties>> = {
+  long: {
+    color: "var(--trading-long-color)",
+    borderColor: "var(--trading-long-color)",
+    backgroundColor: "color-mix(in srgb, var(--trading-long-color) 15%, transparent)",
+  },
+  short: {
+    color: "var(--trading-short-color)",
+    borderColor: "var(--trading-short-color)",
+    backgroundColor: "color-mix(in srgb, var(--trading-short-color) 15%, transparent)",
+  },
 };
 
 export function Badge({ variant = "neutral", children }: BadgeProps) {
   return (
-    <span className={`px-2.5 py-0.5 text-xs rounded-full ${variantClasses[variant]}`}>
+    <span
+      className={`px-2.5 py-0.5 text-xs rounded-full ${variantClasses[variant]}`}
+      style={directionStyles[variant]}
+    >
       {children}
     </span>
   );

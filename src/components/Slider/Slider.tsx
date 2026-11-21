@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import type { InputHTMLAttributes, ReactNode } from "react";
+import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../utils/cn";
 
 export interface SliderMark {
@@ -7,7 +8,32 @@ export interface SliderMark {
   label?: ReactNode;
 }
 
-export interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+const sliderVariants = cva(
+  "block h-4 w-full cursor-pointer accent-gray-100 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+  {
+    variants: {
+      size: {
+        sm: "h-3",
+        md: "h-4",
+      },
+      direction: {
+        long: "accent-[var(--trading-long-color)]",
+        short: "accent-[var(--trading-short-color)]",
+      },
+    },
+    defaultVariants: {
+      size: "md",
+    },
+  },
+);
+
+export type SliderSize = NonNullable<VariantProps<typeof sliderVariants>["size"]>;
+export type SliderDirection = NonNullable<VariantProps<typeof sliderVariants>["direction"]>;
+
+export interface SliderProps
+  extends
+    Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "type">,
+    VariantProps<typeof sliderVariants> {
   marks?: readonly SliderMark[];
   marksClassName?: string;
   containerClassName?: string;
@@ -17,6 +43,9 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
   (
     {
       className,
+      size,
+      direction,
+      style,
       marks,
       marksClassName,
       containerClassName,
@@ -40,10 +69,8 @@ export const Slider = forwardRef<HTMLInputElement, SliderProps>(
           min={min}
           max={max}
           step={step}
-          className={cn(
-            "block h-4 w-full cursor-pointer accent-gray-100 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
-            className,
-          )}
+          style={style}
+          className={cn(sliderVariants({ size, direction }), className)}
         />
         {marks?.length ? (
           <div
