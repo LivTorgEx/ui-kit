@@ -1,7 +1,8 @@
 "use client";
 
 import { format } from "date-fns";
-import { useMemo } from "react";
+import { useId, useMemo } from "react";
+import { Info } from "lucide-react";
 import { cn } from "../../utils/cn";
 import { Panel } from "../Panel/Panel";
 
@@ -39,14 +40,39 @@ function StatSection({
   label,
   value,
   className,
+  info,
 }: {
   label: string;
   value: string;
   className?: string;
+  info?: string;
 }) {
+  const tooltipId = useId();
+
   return (
     <Panel padding="sm">
-      <p className="text-[11px] uppercase tracking-[0.08em] text-gray-500">{label}</p>
+      <div className="flex items-center gap-1">
+        <p className="text-[11px] uppercase tracking-[0.08em] text-gray-500">{label}</p>
+        {info && (
+          <span className="group relative inline-flex">
+            <button
+              type="button"
+              aria-label={`About ${label}`}
+              aria-describedby={tooltipId}
+              className="inline-flex cursor-help items-center text-gray-500 transition-colors hover:text-gray-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-400"
+            >
+              <Info size={13} aria-hidden="true" />
+            </button>
+            <span
+              id={tooltipId}
+              role="tooltip"
+              className="pointer-events-none invisible absolute left-0 top-full z-50 mt-2 w-64 rounded-md border border-gray-700 bg-gray-950 px-3 py-2 text-xs font-normal normal-case leading-relaxed tracking-normal text-gray-200 opacity-0 shadow-xl transition-opacity group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+            >
+              {info}
+            </span>
+          </span>
+        )}
+      </div>
       <p className={cn("mt-1 text-lg font-semibold text-gray-100", className)}>{value}</p>
     </Panel>
   );
@@ -111,6 +137,7 @@ export function CalendarStatsPanel({
         label="Total PnL"
         value={`${formatSigned(summary.totalPnl)} ${currency}`}
         className={summary.totalPnl >= 0 ? "text-emerald-300" : "text-rose-300"}
+        info="Total PnL = realized PnL + funding PnL + net fees. Fees reduce PnL; rebates increase it. Unrealized PnL is excluded."
       />
       <StatSection label="Total fees" value={`${summary.totalFee.toFixed(2)} ${currency}`} />
       <StatSection label="Total volume" value={`${summary.totalVolume.toFixed(2)} ${currency}`} />
