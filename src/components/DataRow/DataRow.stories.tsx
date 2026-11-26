@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { Badge } from "../Badge/Badge";
 import { DataRow } from "./DataRow";
 
 const meta: Meta<typeof DataRow> = {
@@ -36,6 +37,10 @@ export const WithDelta: Story = {
     subright: "Available $2,800.00",
     delta: "+5.2%",
   },
+};
+
+export const WithBadgeValue: Story = {
+  render: () => <DataRow label="Direction" value={<Badge variant="long">LONG</Badge>} />,
 };
 
 export const List: Story = {

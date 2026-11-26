@@ -31,7 +31,7 @@ export const Loss: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="grid grid-cols-2 gap-3 p-6 max-w-md bg-white dark:bg-gray-900 rounded-2xl border border-gray-200 dark:border-gray-800">
+    <div className="grid grid-cols-2 gap-3 p-6 max-w-md bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800">
       <StatTile variant="highlight" label="Total Equity" value="$12,450.00" />
       <StatTile variant="neutral" label="Available" value="$8,200.00" />
       <StatTile variant="profit" label="PnL Today" value="+$340.20" delta="+2.8%" />

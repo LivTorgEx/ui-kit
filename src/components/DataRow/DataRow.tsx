@@ -1,6 +1,8 @@
+import type { ReactNode } from "react";
+
 export interface DataRowProps {
   label: string;
-  value: string;
+  value: ReactNode;
   subleft?: string;
   subright?: string;
   delta?: string;
@@ -9,7 +11,7 @@ export interface DataRowProps {
 export function DataRow({ label, value, subleft, subright, delta }: DataRowProps) {
   const hasSub = subleft !== undefined || subright !== undefined;
   return (
-    <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950/60 p-3">
+    <div className="border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-950/60 p-3">
       <div className="flex items-center justify-between gap-2">
         <p className="text-sm font-medium text-gray-900 dark:text-white">{label}</p>
         <div className="flex items-center gap-2">

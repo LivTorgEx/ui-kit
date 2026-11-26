@@ -16,9 +16,16 @@ const dialogVariants = cva(
         md: "w-[min(94vw,520px)]",
         lg: "w-[min(94vw,760px)]",
       },
+      fullScreen: {
+        false: "",
+        auto: "max-sm:m-0 max-sm:h-[100dvh] max-sm:max-h-none max-sm:w-screen max-sm:max-w-none max-sm:rounded-none max-sm:border-0 max-sm:pt-[env(safe-area-inset-top)] max-sm:pb-[env(safe-area-inset-bottom)]",
+        always:
+          "m-0 h-[100dvh] max-h-none w-screen max-w-none rounded-none border-0 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]",
+      },
     },
     defaultVariants: {
       size: "sm",
+      fullScreen: false,
     },
   },
 );
@@ -52,6 +59,8 @@ export interface DialogProps {
   headerLeading?: ReactNode;
   draggable?: boolean;
   size?: DialogSize;
+  /** Use a viewport-sized dialog always, only on small screens, or never. */
+  fullScreen?: "auto" | "always" | false;
   /** Mount the dialog while closed instead of waiting until it opens. */
   mountOnInit?: boolean;
 }
@@ -68,6 +77,7 @@ export function Dialog({
   headerLeading,
   draggable = false,
   size = "sm",
+  fullScreen = false,
   mountOnInit = false,
 }: DialogProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -186,7 +196,7 @@ export function Dialog({
         display: open ? "flex" : "none",
         transform: draggable ? `translate3d(${offset.x}px, ${offset.y}px, 0)` : undefined,
       }}
-      className={cn(dialogVariants({ size }), className)}
+      className={cn(dialogVariants({ size, fullScreen }), className)}
     >
       <div
         className={dialogHeaderVariants({ draggable })}

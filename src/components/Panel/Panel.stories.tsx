@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Panel } from "./Panel";
 import { EmptyState } from "./EmptyState";
 import { FullPageLoader } from "./FullPageLoader";
+import { Badge } from "../Badge/Badge";
 
 // ─── Panel ────────────────────────────────────────────────────────────────────
 
@@ -18,6 +19,7 @@ const panelMeta: Meta<typeof Panel> = {
     loading: { control: "boolean" },
     empty: { control: "boolean" },
     title: { control: "text" },
+    legend: { control: false },
   },
   parameters: {
     layout: "padded",
@@ -70,6 +72,23 @@ export const Paddings: PanelStory = {
           <p className="text-gray-500 text-xs">Content</p>
         </Panel>
       ))}
+    </div>
+  ),
+};
+
+export const TradingLegends: PanelStory = {
+  render: () => (
+    <div className="flex max-w-xl flex-col gap-5 bg-gray-950 p-6">
+      <Panel
+        legend={<Badge variant="long">LONG</Badge>}
+        className="border-emerald-500"
+        padding="sm"
+      >
+        <p className="text-sm text-gray-300">Long grid estimate</p>
+      </Panel>
+      <Panel legend={<Badge variant="short">SHORT</Badge>} className="border-red-500" padding="sm">
+        <p className="text-sm text-gray-300">Short grid estimate</p>
+      </Panel>
     </div>
   ),
 };

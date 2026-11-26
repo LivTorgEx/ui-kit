@@ -8,6 +8,8 @@ type PanelRadius = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 export interface PanelProps {
   children?: ReactNode;
   title?: ReactNode;
+  /** Render the panel as a fieldset with its label on the top border. */
+  legend?: ReactNode;
   className?: string;
   padding?: PanelPadding;
   /** Corner radius. Defaults to square. */
@@ -54,6 +56,7 @@ function DefaultSkeleton() {
 export function Panel({
   children,
   title,
+  legend,
   className,
   padding = "md",
   rounded = "none",
@@ -84,17 +87,28 @@ export function Panel({
     body = children;
   }
 
-  return (
-    <div
-      className={cn(
-        "flex flex-col border border-gray-700 bg-gray-900",
-        paddingMap[padding],
-        roundedMap[rounded],
-        className,
-      )}
-    >
-      {title && <p className="mb-4 shrink-0 text-sm font-medium text-gray-400">{title}</p>}
+  const panelClassName = cn(
+    "flex flex-col border border-gray-700 bg-gray-900",
+    legend !== undefined && legend !== null && "min-w-0",
+    paddingMap[padding],
+    roundedMap[rounded],
+    className,
+  );
+  const content = (
+    <>
+      {title ? (
+        <p className="mb-4 shrink-0 text-sm font-medium text-gray-400">{title}</p>
+      ) : null}
       <div className="min-h-0 flex-1">{body}</div>
-    </div>
+    </>
+  );
+
+  return legend !== undefined && legend !== null ? (
+    <fieldset className={panelClassName}>
+      <legend className="px-1">{legend}</legend>
+      {content}
+    </fieldset>
+  ) : (
+    <div className={panelClassName}>{content}</div>
   );
 }

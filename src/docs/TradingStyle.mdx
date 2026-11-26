@@ -1,0 +1,52 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Badge } from "../components/Badge/Badge";
+import { SymbolView } from "../components/SymbolView/SymbolView";
+
+<Meta title="Design System/Trading Style" />
+
+# Trading style guide
+
+Trading surfaces should feel focused and responsive: dark neutral surfaces keep market data readable, while emerald, teal, and red carry clear trading meaning.
+
+## Color meaning
+
+- Use emerald for selected markets, active trading state, and positive results.
+- Use the `long` and `short` badge variants only for position direction.
+- Keep instrument types such as `SWAP` and `SPOT` neutral.
+- Use red for short direction, losses, and destructive actions. Do not use it for neutral metadata.
+- Keep price, amount, and percentage values neutral; emphasize the value that changes in a review.
+
+<div className="flex flex-wrap items-center gap-2">
+  <Badge variant="long">LONG</Badge>
+  <Badge variant="short">SHORT</Badge>
+  <Badge variant="neutral">SWAP</Badge>
+</div>
+
+## Selected market
+
+Use `SymbolView` when a market is the focus of an action or confirmation. Show the human-readable pair and instrument type. The selected treatment uses the emerald edge and restrained pulse from the active follower selector; it indicates selection, not live price movement.
+
+<SymbolView name="ACT/USDT" instrumentType="SWAP" selected size="md" />
+
+```tsx
+<SymbolView name="ACT/USDT" instrumentType="SWAP" selected size="sm" />
+```
+
+## Reviews and simulations
+
+- Use a compact `Panel` for each LONG or SHORT grid.
+- Keep a consistent metric table across start previews and action reviews. Add Current and After columns when reviewing a change.
+- Show order distance as a percentage. Keep price ranges for grid boundaries and quote currency for position and order amounts.
+- Use `Text` tones for status and `Badge` variants for direction instead of adding page-specific color classes.
+
+## Block shape
+
+- Use square corners for dense trading content blocks, metric rows, table cells, and selected-market blocks. Do not style each `DataRow` as a rounded card.
+- Keep spacing and separators compact so related values read as one table or panel instead of a stack of separate cards.
+- Preserve the selected-market treatment through its emerald accent and motion, and retain the established shape of outer dialogs. Do not round inner rows.
+
+## Motion and emphasis
+
+- Reserve animation for a meaningful selected or active state. Keep it brief and respect reduced-motion preferences.
+- Avoid moving static metrics on hover; only controls should suggest interaction.
+- Use one strong accent in a panel. Do not make every row glow or animate.

@@ -36,7 +36,7 @@ const variantConfig: Record<
 export function StatTile({ label, value, delta, variant = "neutral" }: StatTileProps) {
   const { containerClass, labelClass, valueClass } = variantConfig[variant];
   return (
-    <div className={`rounded-xl p-3 ${containerClass}`}>
+    <div className={`p-3 ${containerClass}`}>
       <p className={`text-xs uppercase tracking-widest mb-1 ${labelClass}`}>{label}</p>
       <div className="flex items-baseline gap-2">
         <p className={`text-2xl font-semibold ${valueClass}`}>{value}</p>
