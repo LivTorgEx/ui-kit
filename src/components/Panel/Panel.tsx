@@ -96,16 +96,14 @@ export function Panel({
   );
   const content = (
     <>
-      {title ? (
-        <p className="mb-4 shrink-0 text-sm font-medium text-gray-400">{title}</p>
-      ) : null}
+      {title ? <p className="mb-4 shrink-0 text-sm font-medium text-gray-400">{title}</p> : null}
       <div className="min-h-0 flex-1">{body}</div>
     </>
   );
 
   return legend !== undefined && legend !== null ? (
     <fieldset className={panelClassName}>
-      <legend className="px-1">{legend}</legend>
+      <legend className="self-start px-1 text-left">{legend}</legend>
       {content}
     </fieldset>
   ) : (
